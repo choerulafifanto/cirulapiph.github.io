@@ -10,11 +10,73 @@ and open the template in the editor.
 
 
 .body{
-	/*font-family:Arial, Helvetica, sans-serif;*/
-	background: url("../images/backg.jpg");
-	background-size: cover;
-	background-position: top center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	width: 100%;
+    /*font-family:Arial, Helvetica, sans-serif;*/
+    background: url("../images/backg.jpg");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
 }
+
+@font-face{
+    font-family: "Neou";
+    src: "fonts/Neou-Thin.otf";
+}
+
+@font-face{
+    font-family: "Bebas";
+    src: "fonts/BEBAS__.TTF";
+}
+
+.kiri{
+    float: left;
+    position: fixed;
+}
+
+    .kiri > img{
+        height: 680px;
+        padding: 0;
+        margin: -10px;
+    }
+
+.kanan{
+    //float: right;
+    //clear: both;
+    color: white;
+    position: fixed;
+    //margin: 0px 0px 0px 400px;
+    margin: auto 200px auto 500px;
+    text-align: center;
+}
+
+    #hai{
+        font-family: "Neou";
+        font-size: 100px;
+        margin: 120px auto -30px;
+        -webkit-animation-delay: 0.5s;
+    }
+    
+    #cho{
+        font-family: "Bebas";
+        font-size: 150px;
+        letter-spacing: 10px;
+        margin: auto;
+        -webkit-animation-delay: 0.6s;
+        //-webkit-animation-duration: 2s;
+    }
+    
+    .kanan p > span{
+        border-style: solid;
+        border-color: white;
+        border-width: 15px;
+        display: inline-block;
+        padding: 10px;
+    }
+    
+    #andthis{
+        font-family: "Neou";
+        font-size: 50px;
+        margin: auto;
+        -webkit-animation-delay: 0.5s;
+    }
