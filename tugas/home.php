@@ -23,18 +23,31 @@
           <li role="presentation" class="active"><a href="home.html">Home</a></li>
           <li role="presentation"><a href="#">About</a></li>
           <li role="presentation"><a href="#">Contact</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-            <div class="dropdown-menu" style="padding: 15px;">
-                <form method="post" action="login" accept-charset="UTF-8">
-                        <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="username">
-                        <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="password">
-                        <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
-                        <label class="string optional" for="user_remember_me"> Remember me</label>
-                        <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
-                </form>
-            </div>
-        </li>
+          <?php session_start();
+          include 'conn.php';
+          //session_destroy();
+          if( isset( $_SESSION['username'] )){
+              ?>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown"><?echo 'Hi! '.$_SESSION['username']; ?><strong class="caret"></strong></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>
+                </li>
+          <?php }else{ ?>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                    <div class="dropdown-menu" style="padding: 15px;">
+                        <form method="post" action="proses.php" accept-charset="UTF-8">
+                            <input style="margin-bottom: 15px;" autocomplete="off" type="text" placeholder="Username" id="username" name="username">
+                                <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="password">
+                                <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
+                                <label class="string optional" for="user_remember_me"> Remember me</label>
+                                <input class="btn btn-primary btn-block" type="submit" name="login" id="sign-in" value="Sign In">
+                        </form>
+                    </div>
+                </li>
+          <?php } ?>
         </ul>
         <h3 class="text-muted">CHOERUL AFIFANTO</h3>
       </div>
@@ -99,7 +112,7 @@
                 <h4>DAFTAR PROJECT</h4>
             </div>
             <div class="list-group">
-                <a href="tugasJavascript.html" class="list-group-item">[Javascript] Ganti Warna & Perkalian</a>
+                <a href="tugasJavascript.php" class="list-group-item">[Javascript] Ganti Warna & Perkalian</a>
                 <a href="guestBook.php" class="list-group-item">[PHP] Buku Tamu </a>
             </div>
         </div>

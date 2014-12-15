@@ -14,8 +14,6 @@
             if( !$con ){
                 ?><script language="javascript">alert("Gagal Koneksi Database MySql !!")</script><?
                 die('Could not connect: ' . mysql_error());
-            }else{
-                ?><script>alert("Konek kok");</script><?
             }
             
             

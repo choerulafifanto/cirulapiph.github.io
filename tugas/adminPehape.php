@@ -38,7 +38,7 @@
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
                     <div class="dropdown-menu" style="padding: 15px;">
                         <form method="post" action="proses.php" accept-charset="UTF-8">
-                            <input style="margin-bottom: 15px;" autocomplete="off" type="text" placeholder="Username" id="username" name="username">
+                                <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="username">
                                 <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="password">
                                 <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
                                 <label class="string optional" for="user_remember_me"> Remember me</label>
@@ -50,37 +50,48 @@
         </ul>
         <h3 class="text-muted">CHOERUL AFIFANTO</h3>
       </div>
-        <!-- TANYAKAN DISINI -->
-        <form action="proses.php" method="post" name="tamu" >
-        <table id="tamu" class="table">
-          <tr>
-            <td><label for="nama">Nama</label></td>
-            <td><input name="nama" autocomplete="off" size="35" maxlength="50" type="text"></td>
-          </tr>   
-          <tr>
-            <td><label for="email">Email</label></td>
-            <td><input name="email" size="35" maxlength="30" type="email" required></td>
-          </tr>      
-          <tr>
-            <td><label for="web">Website</label></td>
-            <td><input name="web" size="35" maxlength="35" type="url"></td>
-          </tr>   
-          <tr>
-            <td><label for="komentar">Komentar</label></td>
-            <td><textarea cols="50" name="komentar" rows="10" ></textarea></td>
-          </tr>   
-          <tr>
-            <td>&nbsp;</td>
-            <td><input name="submit" value="Kirim" type="submit" ></td>
-          </tr> 
-        </table>
-       </form>
         
+        <!-- WAITING LIST-->
+        <?php 
+            $query=mysql_query("SELECT * FROM bukuTamu WHERE isApproved='NO'"); ?>
+            <h4>KOMENTAR BELUM DIMODERASI</h4>
+            <? while($row=mysql_fetch_array($query)){ ?>
+            <form action="proses.php?id_tamu=<? echo $row['id_tamu']?>" method="post" name="tamu" >
+            <table id="tamu" class="table">
+                  <tr>
+                    <td><label for="nama">Nama</label></td>
+                    <td colspan="2"><label for="nama" name="nama"><? echo $row['Nama'];?></label></td>
+                  </tr>   
+                  <tr>
+                    <td><label for="email">Email</label></td>
+                    <td colspan="2"><label for="email"><? echo $row['Email'];?></label></td>
+                  </tr>      
+                  <tr>
+                    <td><label for="web">Website</label></td>
+                    <td colspan="2"><label for="web"><? echo $row['Website']; ?></label></td>
+                  </tr>   
+                  <tr>
+                    <td><label for="komentar">Komentar</label></td>
+                    <td colspan="2"><label for="komentar"><? echo $row['Komentar']; ?></label></td>
+                  </tr>
+                  <tr>
+                    <td><label for="jawaban">Jawaban</label></td>
+                    <td colspan="2"><textarea cols="50" name="jawaban" rows="10" ></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td><input name="jawab" value="Jawab" type="submit"></td>
+                    <td><input name="hapus" value="Hapus" type="submit"</td>
+                  </tr> 
+            </table>
+            </form>
+            <? } ?>
+            
+      
       <!-- APPROVED LIST-->
       <?php 
             $query=mysql_query("SELECT * FROM bukuTamu WHERE isApproved='YES'"); ?>
             <h4>KOMENTAR TERMODERASI</h4>
-            <form action="proses.php" method="post" name="tamu" >
             <table id="tamu" class="table table-striped">
             <? while($row=mysql_fetch_array($query)){ ?>    
                   <tr>
@@ -106,7 +117,6 @@
                   <tr><th></th><th></th></tr>
             <? } ?>
             </table>
-      </form>
       
       <br><br>
       <div class="row">
