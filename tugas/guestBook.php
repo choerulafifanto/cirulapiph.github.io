@@ -56,11 +56,11 @@
         <form action="proses.php" method="post" name="tamu" >
         <table class="table">
           <tr>
-            <td><label for="nama">Nama</label></td>
-            <td><input name="nama" autocomplete="off" size="35" maxlength="50" type="text"></td>
+            <td><label for="nama">Nama</label><label style="color: red">*</label></td>
+            <td><input name="nama" autocomplete="off" size="35" maxlength="50" type="text" required></td>
           </tr>   
           <tr>
-            <td><label for="email">Email</label></td>
+            <td><label for="email">Email</label><label style="color: red">*</label></td>
             <td><input name="email" size="35" maxlength="30" type="email" required></td>
           </tr>      
           <tr>
@@ -68,8 +68,8 @@
             <td><input name="web" size="35" maxlength="35" type="url"></td>
           </tr>   
           <tr>
-            <td><label for="komentar">Komentar</label></td>
-            <td><textarea cols="50" name="komentar" rows="10" ></textarea></td>
+            <td><label for="komentar">Komentar</label><label style="color: red">*</label></td>
+            <td><textarea cols="50" name="komentar" rows="10" required></textarea></td>
           </tr>   
           <tr>
             <td>&nbsp;</td>
